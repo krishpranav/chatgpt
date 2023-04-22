@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 class ModelsModel {
@@ -12,5 +13,13 @@ class ModelsModel {
     required this.created,
   });
 
-  factory ModelsModel.fromJson(Map<String, dynamic> json) => ModelsModel(id: json["id"], root: json["root"], created: json["created"])
+  factory ModelsModel.fromJson(Map<String, dynamic> json) => ModelsModel(
+        id: json["id"],
+        root: json["root"],
+        created: json["created"],
+      );
+
+  static List<ModelsModel> modelsFromSnapshot(List modelSnapshot) {
+    return modelSnapshot.map((data) => ModelsModel.fromJson(data)).toList();
+  }
 }
